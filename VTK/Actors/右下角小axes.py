@@ -1,0 +1,18 @@
+import vtk
+
+ren = vtk.vtkRenderer()
+renWin = vtk.vtkRenderWindow()
+renWin.AddRenderer(ren)
+iren = vtk.vtkRenderWindowInteractor()
+iren.SetRenderWindow(renWin)
+axesActor = vtk.vtkAxesActor()
+axes = vtk.vtkOrientationMarkerWidget()
+axes.SetOrientationMarker(axesActor)
+axes.SetInteractor(iren)
+axes.EnabledOn()
+axes.InteractiveOn()
+ren.ResetCamera()
+renWin.SetSize(1200, 1200)
+iren.Initialize()
+renWin.Render()
+iren.Start()

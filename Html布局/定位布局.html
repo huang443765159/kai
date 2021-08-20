@@ -1,0 +1,38 @@
+<style>
+    .tree-columns-layout.position {
+        position: relative;
+    }
+
+    .tree-columns-layout.position .left {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 300px;
+        background-color: #a00;
+    }
+
+    .tree-columns-layout.position .right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 300px;
+        background-color: #0aa;
+    }
+
+    .tree-columns-layout.position .center {
+        margin: 0 300px;
+        background-color: #aa0;
+        overflow: auto;
+    }
+</style>
+<section class="tree-columns-layout position">
+    <article class="left">
+        <h1>我是浮动定位左框</h1>
+    </article>
+    <article class="center">
+        <h1>我是浮动定位中间框</h1>
+    </article>
+    <article class="right">
+        <h1>我是浮动定位右框</h1>
+    </article>
+</section>

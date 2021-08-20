@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Switch Example</title>
+
+    <h2>Switch</h2>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+    <script type=text/javascript> $(function() { $("#chem_a").click(function (event) { $.getJSON('/chem_a', { },
+    function(data) { }); return false; }); }); </script>
+
+    <script type=text/javascript> $(function() { $("#chem_b").click(function (event) { $.getJSON('/chem_b', { },
+    function(data) { }); return false; }); }); </script>
+</head>
+
+<body>
+        <input type = "button" id = "chem_a" value = "CHEM_A" />
+        <input type = "button" id = "chem_b" value = "CHEM_B" />
+</body>
+
+</html>

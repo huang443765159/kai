@@ -1,0 +1,67 @@
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap.min.css') }}"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script type="text/javascript" src="{{ url_for('static', filename = 'jquery.min.js') }}"></script>
+    <script>
+        var t = setInterval(function () {
+            var url = "liquid";
+            var data = {type: 1};
+            $.ajax({
+                type: "POST",
+                async: false, //同步请求
+                url: url,
+                data: data,
+                timeout: 1000,
+                success: function (dates) {
+                    console.log(dates)
+                    $("#raw").children("td").eq(1).text(dates['WATER'][4])
+                    $("#raw").children("td").eq(2).text(dates['RAW_CHEM'][0])
+                    $("#raw").children("td").eq(3).text(dates['RAW_CHEM'][1])
+                    $("#raw").children("td").eq(4).text(dates['RAW_CHEM'][2])
+                    $("#raw").children("td").eq(5).text(dates['RAW_CHEM'][3])
+                    $("#mix").children("td").eq(1).text(dates['MIXED_CHEM'][0])
+                    $("#mix").children("td").eq(2).text(dates['MIXED_CHEM'][1])
+                    $("#mix").children("td").eq(3).text(dates['MIXED_CHEM'][2])
+                    $("#mix").children("td").eq(4).text(dates['MIXED_CHEM'][3])
+
+                },
+                error: function () {
+                    console.log('222222')
+                }
+            });
+        }, 3000);
+    </script>
+</head>
+<body>
+<table border="1">
+    <caption>Chem Liquid</caption>
+    <thead>
+    <tr>
+        <th>Liquid</th>
+        <th>Water</th>
+        <th>Ch_a</th>
+        <th>Ch_b</th>
+        <th>Ch_wax</th>
+        <th>Ch_whl</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="raw">
+        <td>Raw</td>
+        <td>{{water}}</td>
+        <td>{{raw_a}}</td>
+        <td>{{raw_b}}</td>
+        <td>{{raw_wax}}</td>
+        <td>{{raw_whl}}</td>
+    </tr>
+    <tr id="mix">
+        <td>Mixed</td>
+        <td>--</td>
+        <td>{{mix_a}}</td>
+        <td>{{mix_b}}</td>
+        <td>{{mix_wax}}</td>
+        <td>{{mix_whl}}</td>
+    </tr>
+    </tbody>
+</table>
+</body>

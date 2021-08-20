@@ -1,0 +1,24 @@
+<form action="http://localhost:5010/result" method="POST">
+    <p>Name <input type="text" name="Name"/></p>
+    <p>Physics <input type="text" name="Physics"/></p>
+    <p>Chemistry <input type="text" name="chemistry"/></p>
+    <p>Maths <input type="text" name="Mathematics"/></p>
+    <p><input type="submit" value="submit"/></p>
+</form>
+
+<button id="aaa" type="button">
+    aaa
+</button>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<script>
+
+    function b() {
+        console.log('bbb')
+    }
+
+    let btn_a = $("#aaa");
+    btn_a.click(b)
+</script>
