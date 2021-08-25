@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 # 返回值：2个，第二个是返回的image
 
 img = cv2.imread('image.jpg')
-img1 = cv2.imread('1.png', 0)  # 使用阈值必须先转灰
+img1 = cv2.imread('图片黑白反转/1.png', 0)  # 使用阈值必须先转灰
 # img1_gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
 ret, thresh1 = cv2.threshold(img1, 127, 255, cv2.THRESH_BINARY)  # 127以下：黑， 127以上：白
 ret, thresh2 = cv2.threshold(img1, 127, 255, cv2.THRESH_BINARY_INV)  # 127以下L：白，127以上：黑

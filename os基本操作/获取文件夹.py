@@ -20,6 +20,10 @@ print(os.path.abspath(os.path.join(os.getcwd(), "../..")))
 
 path = '/Users/huangkai/Desktop/2/'  # 属于文件所在绝对路径
 files = os.listdir(path)  # 返回的一个列表，该文件下所有文件
+
+print(os.path.expanduser('~/Documents'))  # 获取Users后的路径
+
+
 n = 0
 for file in files:
     old_name = path + files[n]

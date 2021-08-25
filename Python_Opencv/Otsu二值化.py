@@ -9,7 +9,7 @@ from matplotlib import pyplot as plt
 
 
 # img = cv2.imread('image.jpg', 0)
-img = cv2.imread('peng.jpeg', 0)
+img = cv2.imread('图片黑白反转/1.png', 0)
 # cv2.imshow('IMG4', img)
 # cv2.imwrite('IMG1.png', img)
 # img1_gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)

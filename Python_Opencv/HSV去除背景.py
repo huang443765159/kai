@@ -3,7 +3,7 @@ import numpy as np
 import time
 
 img = cv2.imread('black.jpg')
-img1 = cv2.imread('1.png')
+img1 = cv2.imread('图片黑白反转/1.png')
 img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 lower_blue = np.array([30, 30, 30])
 upper_blue = np.array([255, 255, 255])
