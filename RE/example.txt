@@ -1,0 +1,1 @@
+bot_id=1, chem_id=1, chem_level=285

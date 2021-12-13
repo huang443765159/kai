@@ -8,9 +8,10 @@ s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
 PORT = 1060
 
-s.bind(('', PORT))
+s.bind(('', 1060))
 print('Listening for broadcast at ', s.getsockname())
 
 while True:
-    data, address = s.recvfrom(65535)
-    print('Server received from {}:{}'.format(address, data.decode('utf-8')))
+    s.sendto(b'\xaa', ('192.168.50.111', 5000))
+    # data, address = s.recvfrom(65535)
+    # print('Server received from {}:{}'.format(address, data.decode('utf-8')))

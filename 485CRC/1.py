@@ -2,7 +2,7 @@ import time
 import struct
 import threading
 """
-注意：485是半双工，只能发一条接收一条然后再发下一条接收下一题啊
+注意：485是半双工，只能发一条接收一条然后再发下一条接收下一条
 
 """
 

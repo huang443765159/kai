@@ -24,7 +24,6 @@ class Test(object):
 
 if __name__ == '__main__':
 
-    test = Test(22)
+    test = Test(8)
     while 1:
         time.sleep(1)
-# 12 14 24 13, 15

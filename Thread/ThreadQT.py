@@ -43,4 +43,3 @@ if __name__ == '__main__':
     thread.sign_data.connect(lambda x: print('SIGNAL', x))
 
     sys.exit(app.exec_())
-

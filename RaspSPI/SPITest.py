@@ -13,7 +13,7 @@ CS引脚默认打开，就可以不使用额外引脚了
 from periphery import SPI
 
 # Open spidev0.0 with mode 0 and max speed 1MHz
-spi = SPI("/dev/spidev0.0", 0, 1000000)  # 树莓派有2个SPI
+spi = SPI("/dev/spidev0.0", 0, 1000000)  # 树莓派有2个SPI   CM4有5个SPI
 
 tx_msg = b'\x00\x01'
 tx_return = spi.transfer(tx_msg)

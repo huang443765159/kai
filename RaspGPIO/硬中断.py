@@ -23,7 +23,7 @@ class Test:
 class Test2:
 
     def __init__(self, pin: int):
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GPIO.BCM)
         GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setwarnings(False)
 

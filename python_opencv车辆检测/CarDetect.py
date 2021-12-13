@@ -46,7 +46,7 @@ class CarDetect(object):
 
 if __name__ == '__main__':
     _video_path = 'cars.mp4'
-    _image_path = 'color.png'
+    _image_path = 'cars.png'
     _car = CarDetect(video_path=_video_path, image_path=_image_path)
-    # _car.image_detect()
-    _car.video_detect()
+    _car.image_detect()
+    # _car.video_detect()

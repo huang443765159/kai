@@ -1,8 +1,10 @@
 import os
+import __main__
 
 
 # 获取当前文件绝对路径
 print(__file__)
+print(os.path.abspath(__main__.__file__))  # 获取自己的路径，包含自己名字
 # 获取当前path
 print('***获取当前path***')
 print(os.getcwd())
@@ -18,10 +20,15 @@ print(os.path.abspath(os.path.join(__file__, '../..')))
 print('***获取上上级目录***')
 print(os.path.abspath(os.path.join(os.getcwd(), "../..")))
 
-path = '/Users/huangkai/Desktop/2/'  # 属于文件所在绝对路径
+path = '/Users/huangkai/Desktop/'  # 属于文件所在绝对路径
 files = os.listdir(path)  # 返回的一个列表，该文件下所有文件
 
 print(os.path.expanduser('~/Documents'))  # 获取Users后的路径
+
+file_name = '1.py'
+tar_packet = os.environ['HOME']
+tar_path = os.path.join(tar_packet, 'Documents', 'CODES', file_name)
+print(tar_path)
 
 
 n = 0
