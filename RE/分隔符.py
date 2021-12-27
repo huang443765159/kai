@@ -44,3 +44,21 @@ print(d)
 a = '123.123    456.789   '
 print(a.rstrip())  # 去除末尾空格
 print(a.rsplit())  # 去除所有空格
+
+
+a = """
+commit d6451a20fe70f71556cb0507bf54a29200cd8e86
+Author: huangkai <443765159@qq.com>
+Date:   Thu Feb 4 15:47:56 2021 +0800
+
+    1：化学泵、高压水、风机、排水泵的开关驱动
+       单模块都包含独立server和端口号
+    2：含Gui测试用例"""
+
+b = '(?<=commit ).*'
+print(re.findall(b, a))
+
+a = 'b7cc146b779160ff01fe15f1b67973348dfead9c	refs/heads/master'
+b = re.split(r'[ ]', a)
+c = re.findall(r'(.+)refs', a)[0]
+print(c)
