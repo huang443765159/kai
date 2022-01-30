@@ -4,7 +4,7 @@ import time
 
 class Client(object):
 
-    def __init__(self, ip='127.0.0.1', port=8888):
+    def __init__(self, ip='192.168.50.51', port=8888):
 
         self._ip = ip
         self._port = port

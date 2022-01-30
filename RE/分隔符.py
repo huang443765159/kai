@@ -1,4 +1,5 @@
 import re
+import os
 
 
 a = 'hello, I am your father, a=1'
@@ -19,10 +20,6 @@ with open('example.txt') as f:
     for line in f.readlines():
         info = re.findall(r'bot_id=\w, chem_id=\w, chem_level=\w', line)
         print(info)
-
-
-import os
-import re
 
 
 TAR_FILE = os.path.expanduser('~/Documents/CODES')

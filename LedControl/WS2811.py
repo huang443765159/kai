@@ -8,7 +8,7 @@ import board
 from time import sleep
 import neopixel
 
-LED = 120
+LED = 1
 pixels = neopixel.NeoPixel(board.D18, LED)  # 控制灯珠的个数
 
 pixels.fill((0, 255, 0))

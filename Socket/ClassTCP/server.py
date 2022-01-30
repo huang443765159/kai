@@ -2,14 +2,18 @@ import socket
 import time
 
 
+IP = '127.0.0.1'  # 默认回环，只能从本地收发消息
+IP1 = ''  # 可以接收所有IP的消息
+IP2 = '0.0.0.0'  # 只可以接受，不能发送
+
+
 class Server(object):
 
-    def __init__(self, ip='192.168.50.111', port=22100):
+    def __init__(self, ip='127.0.0.1', port=22100):
 
         self._ip = ip
         self._port = port
         self._server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self._server.settimeout(0.1)
         self._server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self._server.bind((self._ip, self._port))
         self._server.listen()
