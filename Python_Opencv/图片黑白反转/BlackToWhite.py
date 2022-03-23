@@ -11,6 +11,6 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 print(gray.shape)
 # 最大图像灰度值减去原图像，即可得到反转的图像
 dst = 255 - gray
-cv2.imshow('dst', dst)
+cv2.imshow('dst', dst)  # 只能在主线程imshow，子线程会报错
 cv2.imwrite('2_2.png', dst)
 cv2.waitKey(0)

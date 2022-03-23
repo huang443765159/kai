@@ -4,7 +4,7 @@ import time
 
 class Udp(object):
 
-    def __init__(self, ip='0.0.0.0', port=4444):
+    def __init__(self, ip='192.168.50.170', port=54250):
         self._ip = ip
         self._port = port
         self._udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -25,10 +25,10 @@ class Udp(object):
                 print('Connect err')
                 time.sleep(1)
                 continue
-            while 1:
-                self._udp.sendto(b'hello Tom', (self._ip, self._port))
-                self._recv()
-                time.sleep(1)
+            # while 1:
+            #     self._udp.sendto(b'hello Tom', (self._ip, self._port))
+            #     self._recv()
+            #     time.sleep(1)
 
 
 if __name__ == '__main__':

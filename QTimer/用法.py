@@ -16,11 +16,12 @@ class Timer(QObject):
         # self._timer.setInterval(1000)
         self._timer.start(1000)
         self._timer.timeout.connect(self._timer_v1)
+        self.timer_v2()
 
     def _timer_v1(self):
         print('123')
 
-    def timer_v2(self):
+    def timer_v2(self):  # 只执行单次
         self._timer.singleShot(1000, lambda: print('123456'))
 
 
