@@ -1,5 +1,4 @@
 """
-感谢刘硕提供帮助
 1-进入飞书开发文档
 2-自定义一个机器人
 3-开通权限
@@ -16,6 +15,7 @@ import time
 import json
 import requests
 from requests import request
+from requests_toolbelt import MultipartEncoder
 
 
 def get_time_stamp(s_time: str, end_time: str) -> list:
@@ -46,17 +46,17 @@ class FeiRobot:
         data = req.json()
         return f'Bearer {data["tenant_access_token"]}'
 
-    def send_message(self):
+    def send_message(self, chat_id: str, text: str):
         url = 'https://open.feishu.cn/open-apis/im/v1/messages'
         headers = {'Authorization': self.get_access_token()}
         r_json = {
-            "receive_id": "oc_5add5dffc829badda9ce5e449b4478ed",
-            "content": "{\"text\":\"hello \"}",
+            "receive_id": chat_id,  # 需要填写chat_id
+            "content": text,
             "msg_type": "text"
         }
         params = {'receive_id_type': 'chat_id'}
         req = request(method='POST', url=url, headers=headers, json=r_json, params=params)
-        print(req.text)
+        return req.text
 
     def get_chat_list(self):
         url = 'https://open.feishu.cn/open-apis/im/v1/chats'
@@ -64,7 +64,7 @@ class FeiRobot:
         req = request(method='GET', url=url, headers=headers)
         return req.json()
 
-    def get_messages(self, chat_id: str, page_token: str = ''):
+    def get_messages(self, chat_id: str, page_token: str = ''):  # 获取飞书群聊信息
         url = 'https://open.feishu.cn/open-apis/im/v1/messages'
         headers = {'Authorization': self.get_access_token()}
         t_stamp, e_stamp = get_time_stamp(s_time=s_time, end_time=e_time)
@@ -81,9 +81,6 @@ class FeiRobot:
         params = {'type': 'image'}
         headers = {'Authorization': self.get_access_token()}
         req = request(method='GET', url=url, headers=headers, params=params)
-        with open(f'1.jpg', 'wb') as f:
-            f.write(req.content)
-        f.close()
         return req.content
 
     def upload_file(self, file_path: str, file_type: str, duration: int = None):
@@ -101,49 +98,54 @@ class FeiRobot:
         url = 'https://open.feishu.cn/open-apis/im/v1/messages'
         params = {'receive_id_type': receive_id_type}
         r_json = {'receive_id': receive_id, 'content': json.dumps(content), 'msg_type': msg_type}
-        print(r_json)
         headers = {'Authorization': self.get_access_token()}
         req = request(method='POST', url=url, headers=headers, params=params, json=r_json)
         return req.json()
 
+    def upload_img(self, img_path: str):
+        url = "https://open.feishu.cn/open-apis/im/v1/images"
+        form = {'image_type': 'message',
+                'image': (open(img_path, 'rb'))}
+        multi_form = MultipartEncoder(form)
+        headers = {'Authorization': self.get_access_token(),
+                   'Content-type': multi_form.content_type}
+        req = request(method="POST", url=url, headers=headers, data=multi_form)
+        return req.json()
+
 
 if __name__ == '__main__':
-    # test = FeiRobot(app_id='cli_a1144f3cf739900d', app_secret='Q53I4k7HBhp6e7DVQlPl2gJrqEBgpkt8')
-    test = FeiRobot(app_id='cli_a111b1609139900b', app_secret='RHlKlYW4paxgt5RWa6sY9cWCGLYRAqmC')
+    # test = FeiRobot(app_id='cli_a111b1609139900b', app_secret='RHlKlYW4paxgt5RWa6sY9cWCGLYRAqmC')  # 公司机器人
+    test = FeiRobot(app_id='cli_a1144f3cf739900d', app_secret='Q53I4k7HBhp6e7DVQlPl2gJrqEBgpkt8')  # 自己机器人
     token = test.get_access_token()
     _chat_id = test.get_chat_list()['data']['items'][0]['chat_id']
+    # print(_chat_id)
     # test.send_message()
     # test.send_img()
     message = test.get_messages(chat_id=_chat_id)
-    for one_message in message['data']['items']:
-        if 'image_key' in one_message['body']['content']:
-            _image_key = one_message['body']['content']
-            _message_key = one_message['message_id']
-            infos = re.split(r'[:{}''""]', _image_key)
-            for info in infos:
-                if info.startswith('img_v2') or info.startswith('file_v2'):
-                    _key = info
-                    print(_key, _message_key)
-    infos = message['data']
-    if infos['has_more']:
-        page_token = infos['page_token']
-        new_message = test.get_messages(chat_id=_chat_id, page_token=page_token)
-        for one_message in new_message['data']['items']:
-            if 'image_key' in one_message['body']['content']:
-                _image_key = one_message['body']['content']
-                _message_key = one_message['message_id']
-                infos = re.split(r'[:{}''""]', _image_key)
-                for info in infos:
-                    if info.startswith('img_v2') or info.startswith('file_v2'):
-                        _key = info
-                        print(_key, _message_key)
-    # for data in message['data']:
-    #     print(message['data']['page_token'])
-        # print(message['data']['items'])
-        # print(message['data']['has_more'])
-        # if data == 'has_more':
-        #     page_token = message['sender']['page_token']
-        #     print(page_token)
-
-    # _data = test.get_resources(message_id='om_2eb2b23f3c2d712df94240f48f059753',
-    #                            file_key="file_v2_c71bb5fc-3eba-4d98-8099-fb48618494bg")
+    # print(message)
+    text = test.send_message(chat_id=_chat_id, text="{\"text\":\"" +
+                                                               " 清洗日期：" + str(1) +
+                                                               "\\n 清洗数量：" + str(len([0])) +
+                                                               "\\n 清洗时间：" + s_time +
+                                                               f"--{e_time}" +
+                                                               " \"}")
+    # print(text)
+    # test.send_message(chat_id=_chat_id, text="{\"text\":\""
+    #                                          "车牌号： " + '<京A123456>' +
+    #                                          " \"}")
+    # SEND_IMAGE
+    # image_key = test.upload_img(img_path='2.jpg')['data']['image_key']
+    # data = test.send_file(receive_id_type='chat_id',
+    #                       receive_id=_chat_id,
+    #                       content={'image_key': image_key},
+    #                       msg_type='image')
+    # print(data['msg'])
+    # file_key = \
+    # test.upload_file(file_path='/Users/huangkai/Desktop/ABPCarDataBase/CarInfos/20220310-水单.xls', file_type='xls')[
+    #     'data']['file_key']
+    # # _data = test.get_resources(message_id=_chat_id,
+    # #                            file_key=file_key)
+    # test.send_file(receive_id_type='chat_id',
+    #                receive_id=_chat_id,
+    #                content={'file_key': file_key},
+    #                msg_type='file')
