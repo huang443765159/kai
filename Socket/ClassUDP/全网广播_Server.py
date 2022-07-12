@@ -8,7 +8,7 @@ s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
 PORT = 5000
 
-s.bind(('192.168.50.111', 5000))
+s.bind(('', 5000))
 network = '<broadcast>'
 while 1:
     data, addr = s.recvfrom(255)

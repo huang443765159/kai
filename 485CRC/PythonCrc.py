@@ -22,7 +22,7 @@ def get_crc_data(msg):
 if __name__ == '__main__':
     # get_crc_data(msg=[0x02, 0x06, 0x00, 0x06, 0x00, 0x01])  # A8 38
     # get_crc_data(msg=b'\x02\x06\x00\x06\x00\x01')
-    get_crc_data(b'\x50\x06\x00\x38\x00\x02')
+    get_crc_data(b'\xda\xdb\xdc\xde\x93\x9f')
 
     """
     Test_data
