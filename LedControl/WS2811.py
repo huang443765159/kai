@@ -2,6 +2,8 @@
 sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel
 sudo python3 -m pip install --force-reinstall adafruit-blinka
 D18 = GPIO18
+sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel==6.3，最新的库不兼容
+sudo python3 -m pip install --force-reinstall adafruit-blinka
 '''
 
 import board
