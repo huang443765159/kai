@@ -1,0 +1,316 @@
+/* ------全局部分------ */
+
+/*字体与背景色*/
+body,input,select,textarea {font-family:"GothamSSm","Noto Sans","Noto Sans CJK SC","微软雅黑", "PingFang SC","\5FAE\8F6F\96C5\9ED1","Microsoft Yahei",Arial,Tahoma,Helvetica,\5b8b\4f53,"宋体",sans-serif; font-size:14px; line-height: 1.5; color:#000; font-weight: 300} 
+
+/*清除内外边距*/
+html,body,div,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,object,code,legend,button,input,textarea,th,td,a,img,video{margin:0;padding:0;border:0;outline:0;}
+
+/*清除列表的样式*/
+ul, ol, li {list-style-type:none;}
+
+/*清除列表的样式*/
+em {font-style:normal;}
+
+/*清除图片间隙边距*/
+img,video{vertical-align:top;}
+
+/*让padding只在内部起作用*/
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    
+    
+}
+
+.disableSelect {
+    -moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*去掉input、textarea、select的默认样式*/
+input, textarea, select{
+    appearance:none;
+    -webkit-appearance:none;/* Safari 和 Chrome */
+    -webkit-appearance:none; /* Safari 和 Chrome */
+    -moz-appearance:none; /* Firefox */
+    
+    
+    
+    -moz-user-select: -moz-text;
+    -moz-user-select: text;
+    -o-user-select: text;
+    -khtml-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    
+}
+
+/*去掉iOS横排放大文字*/
+html,body{-webkit-text-size-adjust: 100%;}
+
+/*去掉iOS可点击元素的半透明灰色背景*/
+html,body{-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+
+/* 公共样式 ---------- */
+.clearfix {
+	clear: all;
+}
+
+/*文字呈现点点点*/
+.diandian {
+	overflow: hidden; /*自动隐藏文字*/
+    text-overflow: ellipsis;/*文字隐藏后添加省略号*/
+    white-space: nowrap;/*强制不换行*/
+   /* width: 20em;*//*不允许出现半汉字截断*/
+}
+
+/*Retina屏显示1像素的下边线*/
+.thinUnderLine {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAMAAABFaP0WAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2MDQ1MSwgMjAxNy8wNS8wNi0wMTowODoyMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBFNTdGMTdERUUyMzExRTc5QzQ1RDUzMkMzQzY3REJCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjBFNTdGMTdFRUUyMzExRTc5QzQ1RDUzMkMzQzY3REJCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MEU1N0YxN0JFRTIzMTFFNzlDNDVENTMyQzNDNjdEQkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MEU1N0YxN0NFRTIzMTFFNzlDNDVENTMyQzNDNjdEQkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5qLl+SAAAABlBMVEXL09r///9ZSi3eAAAAAnRSTlP/AOW3MEoAAAAQSURBVHjaYmBkZGBgAAgwAAAPAAOBCJYlAAAAAElFTkSuQmCC") left top no-repeat;
+    background-size: 100% 1px;
+    background-position: left bottom;
+}
+
+/* 按钮处理方式 */
+/* 正常 */
+.btn {
+	cursor:pointer;
+}
+/* 划过 */
+/*
+.btn:hover {
+	filter:alpha(opacity=80);-moz-opacity:0.8;opacity:0.8;
+}
+*/
+/* 按下 */
+.btn:active {
+	filter:alpha(opacity=70);-moz-opacity:0.7;opacity:0.7;
+}
+
+
+
+/* 背景图填满且不重复*/
+.bgFill_width {
+	background-repeat: no-repeat no-repeat;
+	background-size:100% auto;
+}
+.bgFill_cover {
+    background-repeat: no-repeat no-repeat;
+	background-size:cover;
+    background-position: center;
+}
+
+
+/*将元件透明*/
+.hideShow {
+	opacity:0;
+}
+
+/*绝对定位左右居中对齐*/
+.center {
+	display:block;
+	position: absolute;
+	margin:0 auto;
+	left:0; right:0;
+}
+
+/*绝对定位，上下左右居中对齐*/
+.center_center {
+	margin:auto;
+	left:0; right:0; top:0; bottom:0;
+	position: absolute;
+	display:block;
+}
+
+/*图片缩小50%，retina显示*/
+.retina {
+	transform:scale(0.5);
+	-ms-transform:scale(0.5); 	/* IE 9 */
+	-moz-transform:scale(0.5); 	/* Firefox */
+	-webkit-transform:scale(0.5); /* Safari 和 Chrome */
+	-o-transform:scale(0.5); 	/* Opera */
+}
+
+
+
+
+
+
+
+
+
+/*框架定义--------------------*/
+
+html {
+	background: #000;
+/*
+	width: 100%;
+	height: 100%;
+*/
+    
+}
+
+body {
+	position: fixed;
+	display: block;
+	overflow: hidden;
+
+/*	width: 375px;*/
+    width: 100%;
+    height: auto;
+    /*height: 100%;*/
+}
+
+
+/*主容器定义*/
+#mainContainer {
+	/*position: absolute;*/
+    position: fixed;
+	display: block;
+	
+	transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
+	-webkit-transform-origin: 0 0;
+    
+    
+    /* overflow: hidden; */
+	/*width: 100%;
+	height: auto;*/
+    /*height: 100%;*/
+	width: 375px;
+	height: 724px;
+}
+
+
+/*外层部件定义*/
+#mainContainer > .container {
+	width: 100%;
+	/*height: auto;*/
+    height: 100%;
+    
+	/*position: absolute;*/
+    position: fixed;
+	display: block;
+	left: 0px;
+	top: 0px;
+    
+    /* overflow: hidden; */
+}
+#mainContainer > #loading {
+	z-index:14;
+    /* display: none; */
+}
+
+#mainContainer > #front {
+	z-index:12;
+	height: 0px;
+	display: none;
+}
+
+#mainContainer > #bg {
+	z-index:10;
+}
+
+#mainContainer > #pages {
+	z-index:11;
+	/*overflow: hidden;*/
+	display: none;
+}
+#mainContainer > #floatPages {
+	z-index:13;
+	display: none;
+}
+
+
+
+
+/*子页面定义*/
+#mainContainer > #pages > .page {
+	width: 100%;
+	/*height: auto;*/
+    height: 100%;
+    
+	/*position: absolute;*/
+    position: fixed;
+	left: 0px;
+	top: 0px;
+    /*background: #fff;*/
+	display: block;
+
+	/* overflow: hidden; */
+}
+
+
+
+
+
+
+/*子浮页定义*/
+#mainContainer #floatPages .floatPage {
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+	/*position: absolute;*/
+    /*display: block;*/
+	
+    position: fixed;
+	display: flex;
+  	align-items: center;
+}
+
+.floatPage .background {
+	background: rgba(34,35,38,0.6);
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+	position: absolute;
+	display: block;
+}
+
+.floatPage > .main {
+	/*width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+	*/
+	background-color: #fff;
+	/*position: absolute;*/
+	display: block;
+
+
+
+
+	position: relative;
+	width: 290px;
+	height: auto;
+	margin: auto;
+	border-radius: 12px 12px 24px 24px;
+	text-align: center;
+	padding: 28px 20px 30px 20px;
+	/* padding-bottom: 30px; */
+
+	/* top:0px; */
+}
+
+.floatPage .closeBtn {
+    width: 34px;
+    height: 34px;
+    background-image: url('../images/closeBtn.png');
+    top: -49px;
+    position: absolute;
+    left: 50%;
+    margin-left: -17px;
+}
+
+

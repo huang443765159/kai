@@ -1,0 +1,47 @@
+{"frames": {
+
+"arrow_1.png":
+{
+	"frame": {"x":2,"y":2,"w":508,"h":949},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":508,"h":949},
+	"sourceSize": {"w":508,"h":949}
+},
+"arrow_2.png":
+{
+	"frame": {"x":512,"y":2,"w":508,"h":949},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":508,"h":949},
+	"sourceSize": {"w":508,"h":949}
+},
+"arrow_3.png":
+{
+	"frame": {"x":1022,"y":2,"w":508,"h":949},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":508,"h":949},
+	"sourceSize": {"w":508,"h":949}
+},
+"arrow_4.png":
+{
+	"frame": {"x":1532,"y":2,"w":507,"h":949},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":507,"h":949},
+	"sourceSize": {"w":507,"h":949}
+}},
+"animations": {
+	"arrow": ["arrow_1.png","arrow_2.png","arrow_3.png","arrow_4.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "s2.png",
+	"format": "RGBA8888",
+	"size": {"w":2041,"h":953},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a336e850607fc1577fc65c3a2332a527:788291d3f60ea668f99f608ac11a868a:737004295808b2c1f60e653a0860cf1e$"
+}
+}

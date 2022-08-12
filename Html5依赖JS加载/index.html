@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>storeScreen</title>
+
+
+
+
+    
+    
+
+
+
+    <!-- jquery -->
+    <script src="assets/js/_other/jquery-1.11.0.min.js"></script>
+
+    <!-- PreloadJS -->
+    <script src="assets/js/_other/preloadjs-0.6.0.min.js"></script>
+
+    <!-- PixiJS -->
+    <!-- <script src="assets/js/_other/pixi-4.5.1.min.js"></script> -->
+    <script src="assets/js/_other/pixi-4.8.8.min.js"></script>
+
+    <!-- TweenMax -->
+    <script src="assets/js/_other/TweenMax-2.0.2.min.js"></script>
+
+    <!-- TimelineMax -->
+    <script src="assets/js/_other/TimelineMax-2.0.2.min.js"></script>
+
+    <!-- clipboard -->
+    <!-- <script src="assets/js/_other/clipboard-2.0.1.min.js"></script> -->
+
+    <!-- swiper -->
+    <!-- <link rel="stylesheet" href="assets/js/_other/swiper-bundle-7.4.1.min.css"> -->
+    <!-- <script src="assets/js/_other/swiper-bundle-7.4.1.min.js"></script> -->
+
+    <!-- 微信JS -->
+    <!-- <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script> -->
+
+    <!-- boi-frame -->
+    <link rel="stylesheet" href="assets/css/frame.css">
+    <script type="text/javascript" src="assets/js/boi-frame/boi-utils.js"></script>
+    <script type="text/javascript" src="assets/js/boi-frame/boi.js"></script>
+    <!-- <script type="text/javascript" src="assets/js/boi-frame/_src_boi.js"></script> -->
+
+    <!-- 文档 -->
+    <link rel="stylesheet" href="assets/css/index.css">
+    <script type="text/javascript" src="assets/js/index.js"></script>
+
+
+
+    <!-- 手机调试插件 -->
+    <!-- <script src="assets/js/_other/vconsole.min.js"></script>
+    <script type="text/javascript">
+        window.vConsole = new window.VConsole();
+        console.info('欢迎使用 vConsole。可用于展示 console 日志，方便开发、调试。');
+    </script> -->
+
+</head>
+
+<body>
+
+    <!-- 缩放外的部分 ---------------------- -->
+    <!-- <div id="globalBg">
+        <div id="ii" class="absoluteRole"></div>
+        <div id="cc"></div>
+    </div> -->
+
+
+    <!-- 这是主容器 ---------------------- -->
+    <div id="mainContainer" class="disableSelect">
+
+
+        <!-- loading ---------------------- -->
+        <div id="loading">
+
+            
+            <p id="loading_progress"><span>0</span>%</p>
+
+
+        </div>
+
+
+        <!-- 全局前景 ---------------------- -->
+        <div id="front" class="container">
+            <!-- <div id="logo" class="logo bgFill_width"></div> -->
+        </div>
+
+
+        <!-- 全局背景 ---------------------- -->
+        <div id="bg" class="container">
+
+        </div>
+
+
+
+        <!-- 内部Pages 集合 ---------------------- -->
+        <div id="pages" class="container">
+
+
+
+            <!-- scene 场景页面 ---------- -->
+            <div id="scene" templateId="scene" class="page">
+
+
+
+                <div id="baseScene">
+                    
+                </div>
+
+                <div id="btns">
+                    
+                    <p id="titleOther">其他指令：</p>
+                    <div id="btn1" class="sceneBtn">Label</div>
+                    <div id="btn2" class="sceneBtn">Label</div>
+                    <div id="btn3" class="sceneBtn">Label</div>
+
+                    <p id="titleNext">下一指令：</p>
+                    <div id="btnNext" class="sceneBtn">Label</div>
+
+                    
+                    
+                </div>
+                
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- 浮层 集合 ---------------------- -->
+        <div id="floatPages" class="container">
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
