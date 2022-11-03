@@ -4,7 +4,7 @@ import time
 
 class Client(object):
 
-    def __init__(self, ip='192.168.50.51', port=8888):
+    def __init__(self, ip='', port=22100):
 
         self._ip = ip
         self._port = port
@@ -29,12 +29,13 @@ class Client(object):
         while 1:
             try:
                 self._client.settimeout(0.1)
-                data = self._client.recv(3)
+                data, addr = self._client.recvfrom(3)
+                # data = self._client.recv(3)
                 if data == b'':
                     print('空')
                     break
                 else:
-                    print(data)
+                    print(data, addr)
             except socket.error:
                 print('RX err')
             try:

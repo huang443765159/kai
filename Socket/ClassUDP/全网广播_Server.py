@@ -12,5 +12,5 @@ s.bind(('', 5000))
 network = '<broadcast>'
 while 1:
     data, addr = s.recvfrom(255)
-    print(data)
+    print(data, addr)
     # s.sendto('Client broadcast message!'.encode('utf-8'), (network, PORT))
