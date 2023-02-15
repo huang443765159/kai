@@ -3,6 +3,8 @@ import socket
 import threading
 
 
+# UDPsend是线程安全的，无乱序或者错误情况
+
 class UDP(object):
 
     def __init__(self, recv_callback, event_callback, error_callback, recv_length=32, port=10000):
@@ -90,6 +92,7 @@ class UDP(object):
 if __name__ == '__main__':
 
     import time
+    from threading import Thread, Lock
 
     def recv_cb(protocol, rx_msg, ip):
         print(f'{protocol} RX: {rx_msg} ({ip})')
@@ -102,7 +105,19 @@ if __name__ == '__main__':
 
     udp = UDP(recv_cb, event_cb, error_cb, port=10000)
 
+    lock = Lock()
+
+    def send():
+        while 1:
+            with lock:
+                udp.send_to(b'\xff\x00\x00\xaa', ip='192.168.50.51')
+                udp.send_broadcast(b'\x88')
+                print(threading.currentThread())
+
+
+    thread1 = Thread(target=send, daemon=True).start()
+    thread2 = Thread(target=send, daemon=True).start()
+    thread3 = Thread(target=send, daemon=True).start()
+
     while 1:
-        udp.send_to(b'\xff\x00\x00\xaa', ip='192.168.50.104')
-        udp.send_broadcast(b'\x88')
         time.sleep(1)
