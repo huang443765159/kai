@@ -6,9 +6,9 @@ import socket
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
-PORT = 5000
+PORT = 54188
 
-s.bind(('', 5000))
+s.bind(('', 54188))
 network = '<broadcast>'
 while 1:
     data, addr = s.recvfrom(255)

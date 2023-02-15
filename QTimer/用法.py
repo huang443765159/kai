@@ -12,10 +12,10 @@ class Timer(QObject):
         super().__init__()
         # 用法一
         self._timer = QTimer()
-        self._timer.setSingleShot(True)  # 设置为单次，False就是循环
+        # self._timer.setSingleShot(False)  # 设置为单次，False就是循环
         # self._timer.setInterval(1000)
-        self._timer.start(1000)
-        self._timer.timeout.connect(self._timer_v1)
+        # self._timer.start(1000)
+        # self._timer.timeout.connect(self._timer_v1)
         self.timer_v2()
 
     def _timer_v1(self):
@@ -23,6 +23,7 @@ class Timer(QObject):
 
     def timer_v2(self):  # 只执行单次
         self._timer.singleShot(1000, lambda: print('123456'))
+        self._timer.stop()
 
 
 if __name__ == '__main__':

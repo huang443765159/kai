@@ -1,0 +1,10 @@
+{
+  "mcu_ip": "192.168.50.116",
+  "mcu_port": 54188,
+  "pos_start": 1,
+  "pos_interval": 0.02,
+  "one_raster_num": 144,
+  "raster_num": 2,
+  "password": 123456,
+  "user": "huangkai"
+}

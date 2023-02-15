@@ -37,7 +37,7 @@ class Test:
                 self._data[: -1] = self._data[1:]
                 self._data[-1] = i
                 self._curve.setData(self._data)
-            time.sleep(1 / 20)
+            time.sleep(1 / 500)
 
 
 if __name__ == '__main__':

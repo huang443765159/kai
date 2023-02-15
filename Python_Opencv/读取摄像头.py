@@ -1,6 +1,6 @@
 import cv2
 
-video = cv2.VideoCapture(0)
+video = cv2.VideoCapture(1)
 fps = video.get(cv2.CAP_PROP_FPS)
 print(fps)
 size = (int(video.get(cv2.CAP_PROP_FRAME_WIDTH)), int(video.get(cv2.CAP_PROP_FRAME_HEIGHT)))

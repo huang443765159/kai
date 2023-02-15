@@ -3,7 +3,7 @@ from vtkmodules.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 from PyQt5.QtWidgets import QWidget, QMainWindow, QApplication
 from PyQt5.QtCore import Qt
 from _VtkPoints import VtkPoints
-from VtkPoints._VtkLine import VtkLine
+from VTK.VtkPoints._VtkLine import VtkLine
 
 
 class PointsShow(QMainWindow):

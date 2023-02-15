@@ -1,4 +1,4 @@
-# from pyqtgraph import examples
+# from pyqtgraph1 import examples
 # examples.run()
 
 import time
@@ -37,13 +37,13 @@ class AddCurve(object):
         if self._data2:
             self._data2[: -1] = self._data2[1:]
             self._curve2.setData(self._data2)
-        time.sleep(0.1)
+        time.sleep(1 / 500)
 
     def _working(self):  # 实时添加点
         while 1:
             self._data1.append(random.randint(0, 100))
             self._data2.append(random.randint(30, 500))
-            time.sleep(0.1)
+            time.sleep(1 / 500)
 
 
 if __name__ == '__main__':

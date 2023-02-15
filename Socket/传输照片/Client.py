@@ -8,7 +8,7 @@ import struct
 def sock_client():
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect(('192.168.50.174', 8888))
+        s.connect(('', 8888))
     except socket.error as msg:
         print(msg)
         print(sys.exit(1))
@@ -17,7 +17,7 @@ def sock_client():
         # filepath = input('input the file: ')
         # os.system("fswebcam -S 10 1.jpg")
         time.sleep(1)
-        filepath = '/Users/huangkai/Desktop/1.jpg'
+        filepath = '/Users/huangkai/Desktop/ssh'
         fhead = struct.pack(b'128sl', bytes(os.path.basename(filepath).encode('utf-8')), os.stat(filepath).st_size)
         s.send(fhead)
         print('client filepath: {0}'.format(filepath))
