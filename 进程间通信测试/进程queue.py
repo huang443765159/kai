@@ -6,7 +6,7 @@ from multiprocessing import Queue
 import time, random
 
 one_point = [1, 2, 3, 0.4, 0.6, 0.7, 10]
-all_points = [one_point for x in range(150000)]
+all_points = [one_point for x in range(200000)]
 
 
 # 写数据进程执行的代码

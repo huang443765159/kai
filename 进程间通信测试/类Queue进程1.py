@@ -4,7 +4,7 @@ from multiprocessing import Process, Queue
 
 
 one_point = [1, 2, 3, 0.4, 0.6, 0.7, 10]
-all_points = [one_point for x in range(200000)]
+all_points = [one_point for x in range(200)]
 
 
 class PutPoints:
@@ -14,7 +14,8 @@ class PutPoints:
         self._process = Process(target=self._working, daemon=True)
 
     def _working(self):
-        self._q.put(all_points)
+        for i in range(1000):
+            self._q.put((i, all_points))
 
     def start(self):
         self._process.start()
@@ -30,7 +31,8 @@ class GetPoints:
     def _recv(self):
         while 1:
             data = self._q.get()
-            print(time.time() - self._t, len(data))
+            if data[0] == 999:
+                print(time.time() - self._t, len(data))
 
     def start(self):
         self._t = time.time()
@@ -39,7 +41,7 @@ class GetPoints:
 
 
 if __name__ == '__main__':
-    q = Queue()  # 7ms
+    q = Queue()  # 7ms, 用for也是7ms
     get = GetPoints(q=q)
     put = PutPoints(q=q)
     put.start()

@@ -9,7 +9,7 @@ all_points = [one_point for x in range(200)]
 # 写数据进程执行的代码
 def proc_write(q):
     # print('Process is write....')
-    for i in range(10000):
+    for i in range(1000):
         q.put(all_points)
         # print('put data ', len(all_points))
         # time.sleep(random.random())
