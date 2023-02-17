@@ -10,7 +10,7 @@ from multiprocessing import cpu_count, current_process
 
 
 one_point = [1, 2, 3, 0.4, 0.6, 0.7, 10]
-all_points = [one_point for x in range(150000)]
+all_points = [one_point for x in range(200)]
 
 np_points = np.array(all_points).tobytes()  # list to bytes
 
@@ -20,24 +20,31 @@ np_points = np.array(all_points).tobytes()  # list to bytes
 
 def make_memory():
     shm = shared_memory.SharedMemory(create=True, size=len(np_points), name=str(0))
-    shm.buf[:len(np_points)] = np_points
-    return shm
+    for i in range(10000):
+        shm.buf[:len(np_points)] = np_points
 
 
 def get_memory_data(ts):
-    shm = shared_memory.SharedMemory(name=str(0))
-    points = shm.buf.tolist()[:len(np_points)]
-    print(2222, time.time() - ts, len(points))
+    i = 0
+    _data = list()
+    ex_shm = shared_memory.SharedMemory(name=str(0))
+    while 1:
+        i += 1
+        points = ex_shm.buf.tolist()[:len(np_points)]
+        _data.append(points)
+        if i == 10000:
+            print(2222, time.time() - ts, len(_data))
 
 
 if __name__ == '__main__':
     import time
 
-    # 16ms
+    # 1.9s
     ts = time.time()
     process1 = Process(target=make_memory)
     process = Process(target=get_memory_data, args=(ts, ))
     # 2种方式，发送开始，然后子进程开始无脑放数据，主进程开始无脑取
     # 另一种就是也用队列，把名字发过去，然后这边开始按名字取
     process1.start()
+
     process.start()
