@@ -58,6 +58,21 @@ class FeiRobot:
         req = request(method='POST', url=url, headers=headers, json=r_json, params=params)
         return req.text
 
+    def send_msg(self, msg: str, receive_id: str, receive_id_type: str = 'chat_id'):
+        url = 'https://open.feishu.cn/open-apis/im/v1/messages'
+        params = {
+            'receive_id_type': receive_id_type
+        }
+        data = {
+            'receive_id': receive_id,
+            'content': json.dumps({
+                'text': msg
+            }),
+            'msg_type': 'text',
+        }
+        res = request(url=url, method='POST', params=params, data=data)
+        return res.json()
+
     def get_chat_list(self):
         url = 'https://open.feishu.cn/open-apis/im/v1/chats'
         headers = {'Authorization': self.get_access_token()}
