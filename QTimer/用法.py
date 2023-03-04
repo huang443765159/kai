@@ -16,14 +16,14 @@ class Timer(QObject):
         # self._timer.setInterval(1000)
         # self._timer.start(1000)
         # self._timer.timeout.connect(self._timer_v1)
-        self.timer_v2()
+        # self.timer_v2()
 
     def _timer_v1(self):
         print('123')
 
     def timer_v2(self):  # 只执行单次
         self._timer.singleShot(1000, lambda: print('123456'))
-        self._timer.stop()
+        # self._timer.stop()
 
 
 if __name__ == '__main__':
@@ -31,4 +31,5 @@ if __name__ == '__main__':
     from PyQt5.QtWidgets import QApplication
     app = QApplication(sys.argv)
     test = Timer()
+    test.timer_v2()
     sys.exit(app.exec())

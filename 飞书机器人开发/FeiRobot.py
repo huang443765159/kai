@@ -127,8 +127,20 @@ class FeiRobot:
         req = request(method="POST", url=url, headers=headers, data=multi_form)
         return req.json()
 
+    def upload_img(self, img_bytes: bytes):
+        url = "https://open.feishu.cn/open-apis/im/v1/images"
+        form = {'image_type': 'message',
+                'image': bytes}
+        multi_form = MultipartEncoder(form)
+        headers = {'Authorization': self.get_access_token(),
+                   'Content-type': multi_form.content_type}
+        req = request(method="POST", url=url, headers=headers, data=multi_form)
+        return req.json()
+
 
 if __name__ == '__main__':
+    import io
+    from PIL import Image
     # test = FeiRobot(app_id='cli_a111b1609139900b', app_secret='RHlKlYW4paxgt5RWa6sY9cWCGLYRAqmC')  # 公司机器人
     test = FeiRobot(app_id='cli_a1144f3cf739900d', app_secret='Q53I4k7HBhp6e7DVQlPl2gJrqEBgpkt8')  # 自己机器人
     token = test.get_access_token()
@@ -164,3 +176,15 @@ if __name__ == '__main__':
     #                receive_id=_chat_id,
     #                content={'file_key': file_key},
     #                msg_type='file')
+    # test
+    test.send_message(chat_id=_chat_id,
+                      text="{\"text\":\"""" + '11231313123123123132' + " \"}")  # json.dumps('text')
+    img_bytes = open('/Users/huangkai/Documents/CODES4/XYZMengXiuRobot/XYZMengXiuRobot/1.png', 'rb')
+    image = Image.open(io.BytesIO(img_bytes.read()))
+    img_bytes = io.BytesIO()
+    image.save(img_bytes, format='PNG')
+    img_info = test.upload_img(img_bytes=img_bytes.getvalue())
+    print(22222, img_info)
+    img_key = img_info['data']['image_key']
+    result = test.send_file(receive_id_type='chat_id', receive_id=_chat_id,
+                            content={'image_key': img_key}, msg_type='image')
